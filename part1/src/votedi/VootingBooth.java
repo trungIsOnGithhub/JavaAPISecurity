@@ -1,6 +1,9 @@
 package part1.src.votedi;
 
-// DIP code
+import java.util.HashMap;
+import java.util.Map;
+
+// DIP code, but still need to instantiate in main()
 
 class Candidate {};
 
