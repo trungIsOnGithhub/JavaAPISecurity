@@ -1,0 +1,35 @@
+Java Servlet Filter used to: pre-processing(intercept client request), post-processing(intercept the response before sending)
+
+<code>javax.servlet.Filter</code> are pluggable java components, configured in deployment descriptor(web.xml)
+
+JSP Session for resource only when user session is valid
+
+3 scopes of attribute in JSP/Servlet: ContainerContext > Session > Servlet
+
+Placing attribute in huge scope, becoming difficult to change, lead to usage of Filter
+
+Servlet Filter interface contains lifecycle methods, managed by Servlet Container:
+- init(config) throws ServletException  #called only once
+- doFitlter(request, response, filterchain)  #example of Chain of Responsibility Pattern
+- destroy() #called only once
+
+Web Config Descriptor:
+"<filter>
+  <filter-name></filter-name> <!-- mandatory -->
+  <filter-class>com.java....</filter-class> <!-- mandatory -->
+  <init-param> <!-- optional -->
+   <param-name>t</param-name>
+   <param-value></param-value>
+  </init-param>
+</filter>
+<filter-mapping>
+  <filter-name></filter-name> <!-- mandatory -->
+  <url-pattern>/*</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
+  <servlet-name></servlet-name>
+  <dispatcher>[REQUEST, FORWARD, INCLUDE, ERROR]</dispatcher>
+</filter-mapping>"
+
+
+only way maintain session is some unique information about session(session id) passed between server and client in request and response
+
+several ways provide unique identifier in request, response: HTTP Authentication, HTML Hidden Field, URL Rewriting, Cookies, Session Management API
