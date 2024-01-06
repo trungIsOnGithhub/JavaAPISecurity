@@ -4,30 +4,27 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+// https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html
 public class ExecuteQuery extends DBConnection {
+
     public static ResultSet exeQuery(String query) {
         Connection connection = createConnection();
-        Statement st = null;
 
-        try {
-            st = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        }
-        catch (SQLException e) {
-            System.out.println("ExecuteQuery.java [Error] SQL Exception");
-            e.printStackTrace();
-        }
-        catch (NullPointerException e) {
-            System.out.println("ExecuteQuery.java [Error] Null Pointer Exception");
-            e.printStackTrace();
-        }
-
+        Statement statement = null;
         ResultSet resultSet = null;
 
         try {
-            resultSet = st.executeQuery(query);
-        } catch (SQLException ex) {
-            System.out.println("ExecuteQuery.java [Error] SQL Exception");
-            ex.printStackTrace();
+            statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            resultSet = statement.executeQuery(query);
+        }
+        catch (SQLException e) {
+            System.out.println("[Error] Cannot create and execute: " + query);
+            e.printStackTrace();
+        }
+        catch (NullPointerException e) {
+            System.out.println("[Error] Null Pointer Exception Execute Query: "+ query);
+            e.printStackTrace();
         }
 
         return resultSet;

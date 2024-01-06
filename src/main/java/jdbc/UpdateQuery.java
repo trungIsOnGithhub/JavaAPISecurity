@@ -8,30 +8,19 @@ public class UpdateQuery extends DBConnection {
 
     public static int updQuery(String query) {
         Connection connection = createConnection();
-        Statement statment= null;
+        Statement statement = null;
 
         try {
-            statment = connection.createStatement();
+            statement = connection.createStatement();
+
+            return statement.executeUpdate(query);
         }
         catch (SQLException e) {
-            System.out.println("ExecuteQuery.java [Error] SQL Exception");
+            System.out.println("[Error] Cannot Update Query: " + query);
             e.printStackTrace();
         }
         catch (NullPointerException e) {
-            System.out.println("ExecuteQuery.java [Error] Null Pointer Exception");
-            e.printStackTrace();
-        }
-
-        try {
-            return st.executeUpdate(query);
-
-        }
-        catch (SQLException e) {
-            System.out.println("ExecuteQuery.java [Error] SQL Exception");
-            e.printStackTrace();
-        }
-        catch (NullPointerException e) {
-            System.out.println("ExecuteQuery.java [Error] Null Pointer Exception");
+            System.out.println("[Error] Null Pointer Exception while update Query: " + query);
             e.printStackTrace();
         }
 

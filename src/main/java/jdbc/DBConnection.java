@@ -7,18 +7,19 @@ import config.DBConfig;
 
 // https://docs.oracle.com/javase/tutorial/jdbc/basics/connecting.html
 public class DBConnection {
+
     public static Connection createConnection() {
         Connection connection = null;
         DBConfig dbConfig = new DBConfig();
 
         try {
-            try {
-                Class.forName(driver);
-            }
-            catch (ClassNotFoundException ex) {
-                System.out.println("[Error] unable to load driver class from classpath!");
-                System.exit(1);
-            }
+            // try {
+            //     Class.forName(dbConfig.driver);
+            // }
+            // catch (ClassNotFoundException ex) {
+            //     System.out.println("[Error] unable to load driver class from classpath!");
+            //     System.exit(1);
+            // }
 
             // https://docs.oracle.com/javase/8/docs/api/java/sql/DriverManager.html
             connection = DriverManager.getConnection(
