@@ -6,17 +6,18 @@ import java.sql.Statement;
 @SuppressWarnings("unused")
 public class UpdateQuery extends DBConnection {
 
-
     public static int updQuery(String query) {
-        Connection con = createConnection();
-        Statement st = null;
+        Connection connection = createConnection();
+        Statement statment= null;
 
         try {
-            st = con.createStatement();
-        } catch (SQLException e) {
+            statment = connection.createStatement();
+        }
+        catch (SQLException e) {
             System.out.println("ExecuteQuery.java [Error] SQL Exception");
             e.printStackTrace();
-        } catch (NullPointerException e) {
+        }
+        catch (NullPointerException e) {
             System.out.println("ExecuteQuery.java [Error] Null Pointer Exception");
             e.printStackTrace();
         }
@@ -24,10 +25,12 @@ public class UpdateQuery extends DBConnection {
         try {
             return st.executeUpdate(query);
 
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             System.out.println("ExecuteQuery.java [Error] SQL Exception");
             e.printStackTrace();
-        } catch (NullPointerException e) {
+        }
+        catch (NullPointerException e) {
             System.out.println("ExecuteQuery.java [Error] Null Pointer Exception");
             e.printStackTrace();
         }

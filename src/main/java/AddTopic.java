@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet("/add_topic")
-public class AddTopic extends HttpServlet {
+class Topic {
 
+}
+public class AddTopic extends HttpServlet {
     /**
 	 * 
 	 */
@@ -26,11 +28,14 @@ public class AddTopic extends HttpServlet {
 
         {
             HttpSession session = request.getSession(false);
-            int user_id = (int) session.getAttribute("id");
-            String topicname = request.getParameter("topicname");
-            String topicdesc = request.getParameter("topicdesc");
+
+            int user_id = (int)session.getAttribute("id");
+
+            String topicname = request.getParameter("topicname"),
+                    topicdesc = request.getParameter("topicdesc");
 
             String topid_adds = "insert into topic values(NULL , '"+topicname+"', '"+user_id+"',0,'"+topicdesc+"',NULL)";
+
             int i = UpdateQuery.updQuery(topid_adds);
 
             RequestDispatcher rd = request.getRequestDispatcher("/Admin");
