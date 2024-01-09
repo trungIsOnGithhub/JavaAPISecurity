@@ -2,8 +2,8 @@ public class Topic {
     protected int id;
     protected int user_id;
     protected int questions;
-    protected String description;
     protected String name;
+    protected String description;
 
     public int getId() {
         return id;
@@ -17,8 +17,9 @@ public class Topic {
         this.id = 0;
         this.user_id = 0;
         this.questions = 0;
-        this.description = "";
+
         this.name = "";
+        this.description = "";
     }
 
     public String getName() {

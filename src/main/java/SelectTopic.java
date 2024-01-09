@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-@WebServlet("/SelectTopic")
+@WebServlet("/selecttopic")
 public class SelectTopic extends HttpServlet {
     /**
 	 * 

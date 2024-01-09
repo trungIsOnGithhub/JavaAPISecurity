@@ -96,7 +96,7 @@ public class Quiz extends HttpServlet {
                 request.setAttribute("topic_name", topic.getString(1));
                 request.getRequestDispatcher("/quiz.jsp").forward(request, response);
             } else {
-                response.sendRedirect("/SelectTopic");
+                response.sendRedirect("/selecttopic");
             }
         } catch (Exception e) {
             System.out.println("Quiz.java [Error] Exception");

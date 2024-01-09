@@ -20,18 +20,18 @@ public class Signup extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
         PrintWriter out = response.getWriter();
+
         String username = request.getParameter("username");
         String firstname = request.getParameter("firstname");
         String lastname = request.getParameter("lastname");
         String password = request.getParameter("password");
 
         String email = request.getParameter("email");
-
         String work_place = request.getParameter("workplace");
 
         String name = firstname + " " + lastname;
-
         try {
             String username_checkq = "select * from user where username='" + username + "'";
             ResultSet username_checkrs = ExecuteQuery.exeQuery(username_checkq);
