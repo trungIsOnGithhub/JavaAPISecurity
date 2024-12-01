@@ -1,7 +1,6 @@
 package com.nvtrung.model;
 
 import java.time.Instant;
-
 import org.json.JSONObject;
 
 public class Message {
