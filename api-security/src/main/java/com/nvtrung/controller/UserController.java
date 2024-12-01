@@ -11,7 +11,7 @@ import spark.*;
 import com.nvtrung.datasource.GenericRepository;
 
 public class UserController {
-    private static final String USERNAME_REGEX_PATTERN = "[a-zA-Z][a-zA-Z0-9]{1,29}";
+    public static final String USERNAME_REGEX_PATTERN = "[a-zA-Z][a-zA-Z0-9]{1,29}";
     GenericRepository repo;
 
     public void addRepo(GenericRepository repo) {
