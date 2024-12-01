@@ -1,6 +1,8 @@
 package com.nvtrung.controller;
 
 import java.lang.IllegalArgumentException;
+import java.nio.charset.StandardCharsets;
+
 // import com.lambdaworks.crypto.SCryptUtil;
 import com.lambdaworks.crypto.*;
 import org.json.*;
@@ -62,6 +64,40 @@ public class UserController {
             if (user.groupId > 0) {
                 request.attribute("groups", groups);   
             }
+        }
+    }
+    String[] getCredentials(Request request) {
+        var authSchema = "Basic "
+        var offset = authSchema.length();
+        var authHeader = request.headers("Authorization");
+
+        if (authHeader == null || !authHeader.startsWith(authSchema)) {
+            return null;
+        }
+
+        var authKey = authHeader.substring(offset);
+        var credentials = new String(
+            Base64.getDecoder().decode(authKey),
+            StandardCharsets.UTF_8
+        );
+
+        var components = credentials.split(":", 2);
+        if (components.length != 2) {
+            throw new IllegalArgumentException("Invalid auth header");
+        }
+
+        var username = components[0];
+        if (!username.matches(USERNAME_PATTERN)) {
+            throw new IllegalArgumentException("Invalid username");
+        }
+
+        return components;
+    }
+
+    public void requireAuthentication(Request request, Response response) {
+        if (request.attribute("subject") == null) {
+            response.header("WWW-Authenticate", "Bearer");
+            halt(401);
         }
     }
 
