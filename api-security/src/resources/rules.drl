@@ -1,0 +1,15 @@
+package com.nvtrung.rules;
+
+import com.nvtrung.controller.DroolsAccessController.*;
+import com.nvtrung.model.Decision;
+
+global Decision decision;
+
+rule "deny moderation outside from office hours"
+    when
+        Action( this["method"] == "DELETE" )
+        Environment( this["timeOfDay"].hour < 9
+            || this["timeOfDay"].hour > 17 )
+    then
+        decision.deny();
+end
