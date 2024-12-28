@@ -1,13 +1,13 @@
-### Simple Online MCQ website
+### Learning - API Security in Action
 
-> Developed With Java EE 6, JSP - Servelet, run on Apache Tomcat 8 Server
+> Build with Java 11 SE - OpenJDK on Ubuntu 22.04
 
-> MySQL 8.0.28 with JConnector 8.0.28 using JDBC
+- This is my implementation for sample code in the book "API Security In Action", also for self-learning and reviewing my knowledge. 
 
-> Used as an example in Scrum Software Development Training course
+![Book Cover](./assets/cover.png)
 
-#### With Some Basic Features:
-- Login/Logout
-- Permission System for 2 Roles
-- Add/Edit questions
-- Do questions and Calculate score
+Topics Covered:
+1. Basic Authentication
+2. Drool Access Manager
+3. Token Based Authentication
+4. HTTP Request Policy
