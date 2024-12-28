@@ -6,8 +6,12 @@
 
 ![Book Cover](./assets/cover.png)
 
+- Currently in Chapter 8
+
 Topics Covered:
 1. Basic Authentication
 2. Drool Access Manager
 3. Token Based Authentication
 4. HTTP Request Policy
+
+- I am not sure if I could handle these withour mea but just give it a child
